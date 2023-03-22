@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Scroll with Navbar Section Changing</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div class="w-full">
+        <div class="fixed w-full sm:px-32 sm:mt-4">
+            <div x-data="scrolling" x-init="scrolling()" @click="scrolling()" @scroll.window="scrolling()" class="h-16 bg-slate-300 flex items-center justify-evenly sm:rounded-lg">
+                <a id="nav-sec-1" href="#sec-1" class="py-3 px-6 rounded-md font-bold" :class="open_1 ? 'bg-black text-white' : 'bg-white'">1</a>
+                <a id="nav-sec-2" href="#sec-2" class="py-3 px-6 rounded-md font-bold" :class="open_2 ? 'bg-black text-white' : 'bg-white'">2</a>
+                <a id="nav-sec-3" href="#sec-3" class="py-3 px-6 rounded-md font-bold" :class="open_3 ? 'bg-black text-white' : 'bg-white'">3</a>
+                <a id="nav-sec-4" href="#sec-4" class="py-3 px-6 rounded-md font-bold" :class="open_4 ? 'bg-black text-white' : 'bg-white'">4</a>
+            </div>
+        </div>
+        
+        <div class="min-h-screen bg-red-600 flex justify-center items-center" id="sec-1">
+            <span class="font-bold text-9xl text-white">1</span>
+        </div>
+        <div class="min-h-screen bg-orange-500 flex justify-center items-center" id="sec-2">
+            <span class="font-bold text-9xl text-white">2</span>
+        </div>
+        <div class="min-h-screen bg-yellow-300 flex justify-center items-center" id="sec-3">
+            <span class="font-bold text-9xl">3</span>
+        </div>
+        <div class="min-h-screen bg-green-600 flex justify-center items-center" id="sec-4">
+            <div class="font-bold text-9xl text-white">4</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('scrolling', () => ({
+                open_1: true,
+                open_2: false,
+                open_3: false,
+                open_4: false,
+
+                scrolling() {
+                    let sec1 = document.getElementById('sec-1')
+                    let sec2 = document.getElementById('sec-2')
+                    let sec3 = document.getElementById('sec-3')
+                    let sec4 = document.getElementById('sec-4')
+
+                    if (window.pageYOffset <= sec1.offsetTop + sec1.offsetHeight) {
+                        this.open_1 = true
+                        this.open_2 = false
+                        this.open_3 = false
+                        this.open_4 = false
+                    }
+                    if (window.pageYOffset + sec2.offsetHeight * 0.5 >= sec2.offsetTop  && window.pageYOffset <= sec2.offsetTop + sec2.offsetHeight) {
+                        this.open_1 = false
+                        this.open_2 = true
+                        this.open_3 = false
+                        this.open_4 = false
+                    }
+                    if (window.pageYOffset + sec3.offsetHeight * 0.5 >= sec3.offsetTop  && window.pageYOffset <= sec3.offsetTop + sec3.offsetHeight) {
+                        this.open_1 = false
+                        this.open_2 = false
+                        this.open_3 = true
+                        this.open_4 = false
+                    }
+                    if (window.pageYOffset + sec4.offsetHeight * 0.5 >= sec4.offsetTop  && window.pageYOffset <= sec4.offsetTop + sec4.offsetHeight) {
+                        this.open_1 = false
+                        this.open_2 = false
+                        this.open_3 = false
+                        this.open_4 = true
+                    }
+                }
+            }))
+        })
+    </script>
+</body>
+</html>
