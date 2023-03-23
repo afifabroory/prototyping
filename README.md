@@ -16,4 +16,8 @@ I learn:
 - Components
 
 ![the web](./ReactJS/student-card/theweb.gif)
+
 [🌐 Live](https://afifabroory.github.io/prototyping/ReactJS/student-card/build/)
+
+- React JS
+- Tailwind CSS
