@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.105d260d.css",
+    "main.js": "/static/js/main.c61048dc.js",
+    "index.html": "/index.html",
+    "static/media/academic-cap.svg": "/static/media/academic-cap.3121e4743d3348a4732c78069a21ffc8.svg",
+    "main.105d260d.css.map": "/static/css/main.105d260d.css.map",
+    "main.c61048dc.js.map": "/static/js/main.c61048dc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.105d260d.css",
+    "static/js/main.c61048dc.js"
+  ]
+}
